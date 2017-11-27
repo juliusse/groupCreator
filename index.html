@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Group Shuffle</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="./styles.css"/>
+    <script type="text/javascript" src="config.js"></script>
+    <script type="text/javascript" src="functions.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <h1>Group Shuffle</h1>
+    </div>
+    <div class="row">
+        <div class="column">
+            <div class="row">
+                <div class="column">
+                    Number of Groups:
+                </div>
+                <div class="column">
+                    <input class="group-count" value="6">
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="row">
+                <div class="column">
+                    Klasse:
+                </div>
+                <div class="column">
+                    <select class="config-selector">
+                        <option></option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <textarea class="people-names"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="column">
+            <div class="btn btn-success create-groups">Create Groups</div>
+        </div>
+    </div>
+    <div class="row groups-container">
+    </div>
+</div>
+
+<script type="text/javascript" src="index.js"></script>
+</body>
+</html>
