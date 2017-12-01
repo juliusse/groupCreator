@@ -14,7 +14,7 @@ function initConfigSelector(configSelectElement, defaultConfig) {
 
     keys.forEach(function (configKey) {
         var opt = document.createElement('option');
-        opt.value =  configKey;
+        opt.value = configKey;
         opt.innerHTML = configKey;
         opt.selected = configKey === defaultConfig;
         configSelectElement.appendChild(opt);
@@ -23,7 +23,7 @@ function initConfigSelector(configSelectElement, defaultConfig) {
 
 
 function loadConfig(peopleTextArea) {
-    return function(configId) {
+    return function (configId) {
         var configName = configId || getParameterByName('config') || null;
         var config = window.groups[configName]
         window.currentConfig = config ? config : {people: [], nogo: []};
@@ -51,12 +51,20 @@ function createGroupCard(people) {
     groupDiv.classList.add('group-card');
 
     people.forEach(function (person) {
-       var personDiv = document.createElement('div');
-       personDiv.classList.add('person', person.gender);
-       personDiv.innerText = person.name;
+        var personDiv = document.createElement('div');
+        personDiv.classList.add('person', person.gender);
+        personDiv.innerText = person.name;
 
         groupDiv.appendChild(personDiv);
     });
 
     return groupDiv;
 }
+
+module.exports = {
+    getParameterByName,
+    initConfigSelector,
+    loadConfig,
+    shuffle,
+    createGroupCard
+};

@@ -1,3 +1,14 @@
+import { config } from './config';
+import {
+    getParameterByName,
+    initConfigSelector,
+    loadConfig,
+    shuffle,
+    createGroupCard
+} from './utils';
+
+import 'bootstrap/less/bootstrap.less';
+import './index.less';
 function createGroups() {
     groupsContainer.innerHTML = '';
 
