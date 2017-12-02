@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
+import CodeMirror from 'react-codemirror';
 
 import ConfigurationManager from '../../lib/config';
 import './group-configurator.less';
@@ -11,6 +12,23 @@ const configs = () => ConfigurationManager.getInstance();
 function getPeopleListValue(configKey) {
   const people = configs().has(configKey) ? configs().get(configKey).people : [];
   return people.join('\n');
+}
+
+function updateCodeMirrorClasses(codemirror) {
+  const doc = codemirror.getDoc();
+  doc.eachLine((lineHandle) => {
+    doc.removeLineClass(lineHandle, 'background');
+
+    const { text } = lineHandle;
+    const commaPosition = text.indexOf(',');
+    const gender = lineHandle.text.substring(commaPosition + 1).trim().toLowerCase();
+
+    if (commaPosition === -1 || _.isEmpty(gender)) {
+      return;
+    }
+
+    doc.addLineClass(lineHandle, 'background', `g-${gender}`);
+  });
 }
 
 export class GroupConfigurator extends React.Component {
@@ -30,6 +48,10 @@ export class GroupConfigurator extends React.Component {
     };
   }
 
+  componentDidMount() {
+    updateCodeMirrorClasses(this.cmComponent.getCodeMirror());
+  }
+
   handleCountChange(event) {
     this.setState({
       groupCount: event.target.value,
@@ -37,17 +59,19 @@ export class GroupConfigurator extends React.Component {
   }
 
   handleConfigChange({ value: configKey }) {
+    const codemirror = this.cmComponent.getCodeMirror();
+    const newList = getPeopleListValue(configKey);
+    codemirror.setValue(newList);
+    updateCodeMirrorClasses(codemirror);
     this.setState({
       configKey,
       peopleList: getPeopleListValue(configKey),
     });
   }
 
-  handlePeopleListChange(event) {
-    const newListValue = event.target.value;
-    this.setState({
-      peopleList: newListValue,
-    });
+  handlePeopleListChange(peopleList) {
+    updateCodeMirrorClasses(this.cmComponent.getCodeMirror());
+    this.setState({ peopleList });
   }
 
   handleSubmit() {
@@ -69,6 +93,10 @@ export class GroupConfigurator extends React.Component {
       .getAvailableConfigurations()
       .map(key => ({ value: key, label: key }));
     configOptions.unshift({ value: '', label: '---' });
+
+    const selectStyle = {
+      zIndex: 100,
+    };
 
     return (
       <div>
@@ -96,7 +124,7 @@ export class GroupConfigurator extends React.Component {
                   {window.lang.CLASS}:
                 </div>
               </div>
-              <div className="column">
+              <div className="column" style={selectStyle}>
                 <Select
                   rtl
                   value={this.state.configKey}
@@ -107,10 +135,13 @@ export class GroupConfigurator extends React.Component {
             </div>
             <div className="row">
               <div className="column">
-                <textarea
+                <CodeMirror
+                  // eslint-disable-next-line no-return-assign
+                  ref={component => this.cmComponent = component}
                   className="people-names"
                   value={this.state.peopleList}
                   onChange={this.handlePeopleListChange}
+                  options={{ lineNumbers: true }}
                 />
               </div>
             </div>

@@ -5,7 +5,7 @@ import './groups-container.less';
 
 export function GroupsContainer(props) {
   const groupCards = props.groups
-    .map(group => <GroupCard key={JSON.stringify(group)} people={group}/>);
+    .map(group => <GroupCard key={JSON.stringify(group)} people={group} />);
 
   return (
     <div className="row groups-container">

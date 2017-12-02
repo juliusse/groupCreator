@@ -5,6 +5,7 @@
   "main": "js/index.js",
   "scripts": {
     "test": "mocha tests --recursive",
+    "style": "eslint src",
     "watch": "webpack --config webpack.dev.js --watch --progress",
     "build": "webpack --config webpack.prod.js --progress"
   },
@@ -20,6 +21,7 @@
   "homepage": "https://github.com/juliusse/groupCreator#readme",
   "dependencies": {
     "bootstrap": "^3.3.7",
+    "codemirror": "^5.32.0",
     "jquery": "^3.2.1",
     "lodash": "^4.17.4",
     "prop-types": "^15.6.0",

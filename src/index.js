@@ -1,4 +1,5 @@
 import 'bootstrap/less/bootstrap.less';
+import 'codemirror/lib/codemirror.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
