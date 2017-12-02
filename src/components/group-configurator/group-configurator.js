@@ -88,7 +88,7 @@ export class GroupConfigurator extends React.Component {
               </div>
             </div>
           </div>
-          <div className="column">
+          <div className="column c-40">
             <div className="row">
               <div className="column">
                 <div className="m-text">
