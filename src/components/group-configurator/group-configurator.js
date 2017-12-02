@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import ConfigurationManager from '../../lib/config';
 import './group-configurator.less';
+import { Select } from '../select/select';
 
 const configs = () => ConfigurationManager.getInstance();
 
@@ -35,9 +36,7 @@ export class GroupConfigurator extends React.Component {
     });
   }
 
-  handleConfigChange(event) {
-    const configKey = event.target.value;
-
+  handleConfigChange({ value: configKey }) {
     this.setState({
       configKey,
       peopleList: getPeopleListValue(configKey),
@@ -66,8 +65,9 @@ export class GroupConfigurator extends React.Component {
   }
 
   render() {
-    const configOptions = configs().getAvailableConfigurations()
-      .map(key => <option key={key} value={key}>{key}</option>);
+    const configOptions = configs()
+      .getAvailableConfigurations()
+      .map(key => ({ value: key, label: key }));
 
     return (
       <div>
@@ -91,14 +91,12 @@ export class GroupConfigurator extends React.Component {
                 {window.lang.CLASS}:
               </div>
               <div className="column">
-                <select
-                  className="config-selector"
+                <Select
+                  rtl
                   value={this.state.configKey}
                   onChange={this.handleConfigChange}
-                >
-                  <option value="empty" />
-                  {configOptions}
-                </select>
+                  options={configOptions}
+                />
               </div>
             </div>
             <div className="row">
