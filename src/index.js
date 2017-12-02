@@ -2,7 +2,6 @@ import 'bootstrap/less/bootstrap.less';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import './index.less';
 import { App } from './components/app';
 import lang from './lang';
 
