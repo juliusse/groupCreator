@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './group-card.less';
 import { GroupCard } from './group-card';
+import './groups-container.less';
 
 export function GroupsContainer(props) {
   const groupCards = props.groups

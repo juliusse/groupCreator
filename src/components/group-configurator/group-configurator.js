@@ -75,7 +75,9 @@ export class GroupConfigurator extends React.Component {
           <div className="column">
             <div className="row">
               <div className="column">
-                {window.lang.NUM_GROUPS}:
+                <div className="m-text">
+                  {window.lang.NUM_GROUPS}:
+                </div>
               </div>
               <div className="column">
                 <input
@@ -88,7 +90,9 @@ export class GroupConfigurator extends React.Component {
           <div className="column">
             <div className="row">
               <div className="column">
-                {window.lang.CLASS}:
+                <div className="m-text">
+                  {window.lang.CLASS}:
+                </div>
               </div>
               <div className="column">
                 <Select
@@ -117,7 +121,7 @@ export class GroupConfigurator extends React.Component {
               tabIndex="0"
               onKeyDown={this.handleSubmit}
               onClick={this.handleSubmit}
-              className="btn btn-success"
+              className="m-button-create"
             >
               {window.lang.CREATE_GROUPS}
             </div>

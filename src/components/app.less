@@ -1,3 +1,5 @@
+@import '~bootstrap/less/bootstrap.less';
+
 .container {
   display: flex;
   width: 800px;
@@ -14,4 +16,24 @@
 .column {
   flex-grow: 1;
   margin: 0px 8px;
+}
+
+.m-text {
+  line-height: 36px;
+  font-size: 14pt;
+
+  &[data-size="small"] {
+    line-height: 24px;
+    font-size: 12pt;
+  }
+}
+
+.m-button-create {
+  &:extend(.btn);
+  &:extend(.btn-success);
+  &:extend(.m-text);
+
+  display: flex;
+  flex-flow: column;
+  cursor: pointer;
 }
