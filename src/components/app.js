@@ -23,7 +23,7 @@ export class App extends React.Component {
     }
   }
 
-  handleConfigurationSubmission({ people, config: { nogos }, groupCount }) {
+  handleConfigurationSubmission({ people, config: { nogos = {} } = {}, groupCount }) {
     const groups = generateGroups({ people, nogos, groupCount });
     this.setState({
       groups,
