@@ -39,6 +39,12 @@ export function generateGroups({ people, nogos = {}, groupCount }) {
     }
   }
 
+  groups.forEach((group) => {
+    const leaderIndex = _.random(0, group.length - 1);
+    const leader = group[leaderIndex];
+    leader.isGroupLeader = true;
+  });
+
   return groups;
 }
 

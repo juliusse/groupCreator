@@ -7,11 +7,24 @@
   margin: 2px 0px;
   border-radius: 5px;
 
+  display: flex;
+  flex-direction: row;
+
   &[data-gender="male"] {
     background-color: #6bffff;
   }
 
   &[data-gender="female"] {
     background-color: #ffa8cf;
+  }
+
+  .m-text {
+    flex-basis: 100%;
+  }
+
+  .group-leader {
+    width: 20px;
+    height: 20px;
+    margin: 2px;
   }
 }
