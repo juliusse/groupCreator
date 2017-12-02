@@ -2,7 +2,6 @@ import * as _ from 'lodash';
 
 export function generateGroups({ people, nogos = {}, groupCount }) {
   const women = people.filter(person => person.gender === 'female');
-
   const men = people.filter(person => person.gender === 'male');
 
   let retries = 2000;
