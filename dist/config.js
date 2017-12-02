@@ -1,4 +1,4 @@
-const configs = {
+window.configs = {
   example: {
     people: [
       'Jon Doe, M',
@@ -9,5 +9,3 @@ const configs = {
     },
   },
 };
-
-export default configs;

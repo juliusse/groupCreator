@@ -2,11 +2,14 @@ import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import configs from '../../config';
+import ConfigurationManager from '../../lib/config';
 import './group-configurator.less';
 
+const configs = () => ConfigurationManager.getInstance();
+
 function getPeopleListValue(configKey) {
-  return (configKey && configs[configKey]) ? configs[configKey].people.join('\n') : '';
+  const people = configs().has(configKey) ? configs().get(configKey).people : [];
+  return people.join('\n');
 }
 
 export class GroupConfigurator extends React.Component {
@@ -57,13 +60,13 @@ export class GroupConfigurator extends React.Component {
         const gender = _.get(personProps, '[1]', 'M').trim() === 'M' ? 'male' : 'female';
         return { name, gender };
       });
-    const config = configs[this.state.configKey];
+    const config = configs().get(this.state.configKey);
 
     this.onSubmit({ config, people, groupCount: this.state.groupCount });
   }
 
   render() {
-    const configOptions = Object.keys(configs)
+    const configOptions = configs().getAvailableConfigurations()
       .map(key => <option key={key} value={key}>{key}</option>);
 
     return (
