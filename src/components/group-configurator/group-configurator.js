@@ -68,6 +68,7 @@ export class GroupConfigurator extends React.Component {
     const configOptions = configs()
       .getAvailableConfigurations()
       .map(key => ({ value: key, label: key }));
+    configOptions.unshift({ value: '', label: '---' });
 
     return (
       <div>

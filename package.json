@@ -5,8 +5,8 @@
   "main": "js/index.js",
   "scripts": {
     "test": "mocha tests --recursive",
-    "watch": "webpack --config webpack.dev.js --watch",
-    "build": "webpack --config webpack.prod.js"
+    "watch": "webpack --config webpack.dev.js --watch --progress",
+    "build": "webpack --config webpack.prod.js --progress"
   },
   "repository": {
     "type": "git",
