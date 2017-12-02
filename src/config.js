@@ -4,7 +4,7 @@ const configs = {
       'Jon Doe, M',
       'Johanna Doe, W',
     ],
-    nogo: {
+    nogos: {
       'Johanna Doe': ['Jon Doe'],
     },
   },

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './person.less';
 
-function Person(props) {
+export function Person(props) {
   return (
     <div className="person" data-gender={props.gender}>
       {props.name}
@@ -15,4 +15,6 @@ Person.propTypes = {
   gender: PropTypes.string.isRequired,
 };
 
-export default Person;
+export default {
+  Person,
+};

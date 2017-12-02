@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './group-card.less';
-import GroupCard from './group-card';
+import { GroupCard } from './group-card';
 
-function GroupsContainer(props) {
+export function GroupsContainer(props) {
   const groupCards = props.groups
-    .map(group => <GroupCard key={JSON.stringify(group)} people={group} />);
+    .map(group => <GroupCard key={JSON.stringify(group)} people={group}/>);
 
   return (
     <div className="row groups-container">
@@ -22,4 +22,6 @@ GroupsContainer.defaultProps = {
   groups: [],
 };
 
-export default GroupsContainer;
+export default {
+  GroupsContainer,
+};

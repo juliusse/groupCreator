@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './group-card.less';
-import Person from '../person';
+import { Person } from '../person';
 
-function GroupCard(props) {
+export function GroupCard(props) {
   const persons = props.people
     .map(person => <Person key={person.name} gender={person.gender} name={person.name} />);
 
@@ -22,4 +22,6 @@ GroupCard.defaultProps = {
   people: [],
 };
 
-export default GroupCard;
+export default {
+  GroupCard,
+};

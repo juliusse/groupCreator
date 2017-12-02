@@ -1,11 +1,12 @@
 import React from 'react';
 
 import './app.less';
-import GroupConfigurator from './group-configurator/group-configurator';
-import { shuffle, getParameterByName } from '../utils';
-import GroupsContainer from './groups-list/groups-container';
+import { GroupConfigurator } from './group-configurator/group-configurator';
+import { getParameterByName } from '../lib/utils';
+import { GroupsContainer } from './groups-list/groups-container';
+import { generateGroups } from '../lib/generate-groups';
 
-class App extends React.Component {
+export class App extends React.Component {
   constructor(props) {
     super(props);
 
@@ -22,47 +23,8 @@ class App extends React.Component {
     }
   }
 
-  handleConfigurationSubmission({ people, config: { nogo }, groupCount }) {
-    const women = people.filter(person => person.gender === 'female');
-
-    const men = people.filter(person => person.gender === 'male');
-
-    let retries = 2000;
-    let groups;
-
-    function addToGroup(person, index) {
-      const groupIndex = index % groupCount;
-      if (!groups[groupIndex]) {
-        groups[groupIndex] = [];
-      }
-
-      groups[groupIndex].push(person);
-    }
-
-    while (retries !== 0) {
-      retries -= 1;
-      groups = [];
-      shuffle(women);
-      shuffle(men);
-
-      const shuffledPeople = women.concat(men);
-      shuffledPeople.forEach(addToGroup);
-
-      const nogoFound = groups.some((group) => {
-        const peopleOnNoGoList =
-          group.filter(person => Object.keys(nogo).indexOf(person.name) !== -1);
-
-        return group
-          .some(person => peopleOnNoGoList
-            .some(noGoPerson => nogo[noGoPerson.name].indexOf(person.name) !== -1));
-      });
-
-      if (!nogoFound) {
-        break;
-      }
-    }
-
-
+  handleConfigurationSubmission({ people, config: { nogos }, groupCount }) {
+    const groups = generateGroups({ people, nogos, groupCount });
     this.setState({
       groups,
     });
@@ -84,4 +46,6 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default {
+  App,
+};

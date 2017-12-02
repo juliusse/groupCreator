@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import './index.less';
-import App from './components/app';
+import { App } from './components/app';
 import lang from './lang';
 
 const language = document.querySelector('html').lang;

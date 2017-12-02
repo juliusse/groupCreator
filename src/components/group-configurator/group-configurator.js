@@ -9,7 +9,7 @@ function getPeopleListValue(configKey) {
   return (configKey && configs[configKey]) ? configs[configKey].people.join('\n') : '';
 }
 
-class GroupConfigurator extends React.Component {
+export class GroupConfigurator extends React.Component {
   constructor(props) {
     super(props);
 
@@ -136,4 +136,6 @@ GroupConfigurator.defaultProps = {
   defaultConfig: '',
 };
 
-export default GroupConfigurator;
+export default {
+  GroupConfigurator,
+};
