@@ -39,6 +39,15 @@ module.exports = {
                     limit: 8192
                 }
             }
+        }, {
+            test: /\.js$/,
+            exclude: /node_modules/,
+            use: {
+                loader: "babel-loader",
+                options: {
+                    retainLines: true
+                }
+            }
         }],
         loaders: [],
     },
