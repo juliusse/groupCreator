@@ -74,13 +74,14 @@ export class GroupConfigurator extends React.Component {
         <div className="row">
           <div className="column">
             <div className="row">
-              <div className="column">
+              <div className="column" data-basis="66">
                 <div className="m-text">
                   {window.lang.NUM_GROUPS}:
                 </div>
               </div>
-              <div className="column">
+              <div className="column c-25" data-basis="33">
                 <input
+                  className="m-input rtl"
                   defaultValue={this.state.groupCount}
                   onChange={this.handleCountChange}
                 />
