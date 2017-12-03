@@ -38,6 +38,7 @@ export class GroupConfigurator extends React.Component {
     this.handleCountChange = this.handleCountChange.bind(this);
     this.handleConfigChange = this.handleConfigChange.bind(this);
     this.handlePeopleListChange = this.handlePeopleListChange.bind(this);
+    this.handleSubmitKeyDown = this.handleSubmitKeyDown.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.onSubmit = props.onSubmit;
 
@@ -72,6 +73,10 @@ export class GroupConfigurator extends React.Component {
   handlePeopleListChange(peopleList) {
     updateCodeMirrorClasses(this.cmComponent.getCodeMirror());
     this.setState({ peopleList });
+  }
+
+  handleSubmitKeyDown() {
+
   }
 
   handleSubmit() {
@@ -152,7 +157,7 @@ export class GroupConfigurator extends React.Component {
             <div
               role="button"
               tabIndex="0"
-              onKeyDown={this.handleSubmit}
+              onKeyDown={this.handleSubmitKeyDown}
               onClick={this.handleSubmit}
               className="m-button-create"
             >
